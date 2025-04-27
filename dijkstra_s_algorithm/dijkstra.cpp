@@ -29,6 +29,9 @@ private:
     std::vector<std::vector<double>> m_graph;
     mutable std::vector<double> dist;
     mutable std::vector<bool> visited;
+    /*为什么这里用mutable修饰？
+    dijkstra()算法本身，从逻辑上来说，不应该破坏graph，但是dist、visited只是计算时用到的辅助数组，
+    是可以被修改的。用mutable允许dijkstra()算法修改dist、visited，但是不能修改graph*/
 };
 
 void Graph::drawGraph() {
